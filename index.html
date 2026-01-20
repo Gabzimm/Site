@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital APP - Discord Bot</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🏥 Hospital APP</h1>
+            <div class="nav-links">
+                <a href="#home">Início</a>
+                <a href="#features">Recursos</a>
+                <a href="#commands">Comandos</a>
+                <a href="#staff">Staff</a>
+                <a href="https://discord.gg/seu-convite" class="btn-invite" target="_blank">
+                    <i class="fab fa-discord"></i> Entrar no Discord
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bot de Administração para Servidores de RP</h1>
+                <p>Sistema completo de tickets, sets, cargos e muito mais para seu servidor de Roleplay no Discord</p>
+                <div class="hero-buttons">
+                    <a href="https://discord.com/oauth2/authorize?client_id=SEU_BOT_ID&scope=bot&permissions=8" 
+                       class="btn-primary" target="_blank">
+                        <i class="fas fa-robot"></i> Adicionar Bot
+                    </a>
+                    <a href="#features" class="btn-secondary">
+                        <i class="fas fa-star"></i> Ver Recursos
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://cdn.discordapp.com/attachments/1462150327070359707/1462151759337361654/ChatGPT_Image_17_de_jan._de_2026_18_28_54.png" 
+                     alt="Dashboard do Bot">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">🎮 Recursos Principais</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3>Sistema de Tickets</h3>
+                    <p>Sistema completo de tickets com painel, fechamento automático, logs e controle por staff.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tag"></i>
+                    </div>
+                    <h3>Sistema de Sets</h3>
+                    <p>Aprovação automática de sets com alteração de nickname e atribuição de cargos.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Controle de Cargos</h3>
+                    <p>Gerenciamento avançado de cargos com hierarquia e permissões automáticas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Moderação</h3>
+                    <p>Ferramentas de moderação com logs, advertências e sistema de punições.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="commands" class="commands">
+        <div class="container">
+            <h2 class="section-title">⚙️ Comandos Principais</h2>
+            <div class="commands-grid">
+                <div class="command-category">
+                    <h3><i class="fas fa-ticket-alt"></i> Tickets</h3>
+                    <ul>
+                        <li><code>!setup_tickets</code> - Configura painel</li>
+                        <li><code>!ticket_info</code> - Informações do ticket</li>
+                        <li><code>!fechar_ticket</code> - Fecha ticket atual</li>
+                    </ul>
+                </div>
+                
+                <div class="command-category">
+                    <h3><i class="fas fa-user-tag"></i> Sets</h3>
+                    <ul>
+                        <li><code>!setup_set</code> - Configura painel de sets</li>
+                        <li><code>!check_id [id]</code> - Verifica ID Fivem</li>
+                        <li><code>!sets_pendentes</code> - Lista pedidos pendentes</li>
+                    </ul>
+                </div>
+                
+                <div class="command-category">
+                    <h3><i class="fas fa-users-cog"></i> Administração</h3>
+                    <ul>
+                        <li><code>!setup_cargos</code> - Configura sistema de cargos</li>
+                        <li><code>!limpar [número]</code> - Limpa mensagens</li>
+                        <li><code>!ban [@usuário]</code> - Bane usuário</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="staff" class="staff">
+        <div class="container">
+            <h2 class="section-title">👑 Staff do Hospital APP</h2>
+            <p class="section-subtitle">Nossa equipe está sempre pronta para ajudar!</p>
+            
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-avatar">00</div>
+                    <h3>Fundador</h3>
+                    <p>Liderança e desenvolvimento</p>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-avatar">G</div>
+                    <h3>Gerentes</h3>
+                    <p>Gestão do servidor</p>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-avatar">S</div>
+                    <h3>Sub-líderes</h3>
+                    <p>Suporte e moderação</p>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-avatar">R</div>
+                    <h3>Recrutadores</h3>
+                    <p>Novos membros e sets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>🏥 Hospital APP</h3>
+                    <p>Bot profissional para servidores de RP</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <a href="#home">Início</a>
+                    <a href="#features">Recursos</a>
+                    <a href="#commands">Comandos</a>
+                    <a href="#staff">Staff</a>
+                </div>
+                
+                <div class="footer-discord">
+                    <h4>Discord</h4>
+                    <a href="https://discord.gg/seu-convite" target="_blank">
+                        <i class="fab fa-discord"></i> Servidor de Suporte
+                    </a>
+                    <p>Status do Bot: <span class="status-online">● Online</span></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Hospital APP Bot. Todos os direitos reservados.</p>
+                <p>Desenvolvido com ❤️ para a comunidade de RP</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
