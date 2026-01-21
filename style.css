@@ -1449,3 +1449,113 @@ h1, h2, h3, h4 {
         transform: translateY(0);
     }
 }
+/* Nova seção Comprar */
+.comprar-section {
+    padding: 100px 0;
+    background: var(--dark);
+}
+
+/* Estilo para a seção de compras */
+.comprar-section .products-grid {
+    margin-bottom: 60px;
+}
+
+/* Ajuste do botão Adquira o Seu! */
+.btn-buy-now {
+    background: linear-gradient(45deg, #FF6B35, #FFA62E);
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-buy-now:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+}
+
+/* Seção História (timeline) - JÁ EXISTE, só garantir que está no lugar certo */
+.our-story {
+    padding: 100px 0;
+    background: var(--darker);
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--secondary), var(--accent));
+    opacity: 0.3;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.timeline-date {
+    flex: 1;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: var(--accent);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.timeline-item:nth-child(odd) .timeline-date {
+    justify-content: flex-end;
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+    justify-content: flex-start;
+}
+
+.timeline-content {
+    flex: 1;
+    padding: 30px;
+    background: rgba(20, 20, 40, 0.8);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: 20px;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-right: 20px;
+}
+
+.timeline-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.timeline-content p {
+    color: var(--gray);
+    line-height: 1.6;
+}
