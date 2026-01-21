@@ -629,3 +629,209 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCart();
     updatePrice(); // Inicializar preço
 });
+// Sistema de Navegação SPA (Single Page Application)
+let currentPage = 'home';
+let isLoading = false;
+
+// Navegar entre páginas
+function navigateTo(pageId) {
+    if (isLoading || pageId === currentPage) return;
+    
+    isLoading = true;
+    
+    // Adicionar loading
+    const loading = document.createElement('div');
+    loading.className = 'page-loading';
+    loading.innerHTML = '<div class="loading-spinner"></div>';
+    document.body.appendChild(loading);
+    
+    // Animar saída da página atual
+    const currentPageEl = document.getElementById(currentPage + 'Page');
+    const nextPageEl = document.getElementById(pageId + 'Page');
+    
+    if (currentPageEl) {
+        currentPageEl.classList.add('page-exit');
+    }
+    
+    // Após animação, trocar páginas
+    setTimeout(() => {
+        if (currentPageEl) {
+            currentPageEl.classList.remove('active', 'page-exit');
+        }
+        
+        if (nextPageEl) {
+            nextPageEl.classList.add('active', 'page-enter');
+            
+            // Atualizar URL no navegador (sem recarregar)
+            window.history.pushState({ page: pageId }, '', `#${pageId}`);
+            
+            // Scroll para o topo
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            
+            // Atualizar estatísticas se for home
+            if (pageId === 'home') {
+                updateStats();
+            }
+        }
+        
+        currentPage = pageId;
+        
+        // Remover animação de entrada
+        setTimeout(() => {
+            if (nextPageEl) {
+                nextPageEl.classList.remove('page-enter');
+            }
+            
+            // Remover loading
+            loading.remove();
+            isLoading = false;
+            
+            // Atualizar carrinho (se estiver na página de compras)
+            updateCart();
+        }, 500);
+        
+    }, 500);
+}
+
+// Voltar para home
+function goHome() {
+    navigateTo('home');
+}
+
+// Inicializar navegação
+function initNavigation() {
+    // Verificar URL inicial
+    const hash = window.location.hash.replace('#', '');
+    if (hash && (hash === 'compras' || hash === 'home')) {
+        navigateTo(hash);
+    }
+    
+    // Configurar botões de navegação
+    document.querySelectorAll('[onclick*="navigateTo"]').forEach(btn => {
+        const match = btn.getAttribute('onclick').match(/navigateTo\('([^']+)'\)/);
+        if (match) {
+            const pageId = match[1];
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                navigateTo(pageId);
+            });
+        }
+    });
+    
+    // Botões "Voltar ao Site"
+    document.querySelectorAll('.btn-back-home').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            navigateTo('home');
+        });
+    });
+    
+    // Botões na página de compras que levam para home + scroll
+    document.querySelectorAll('a[href="#contact"], a[href="#home"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (currentPage !== 'home') {
+                e.preventDefault();
+                const target = this.getAttribute('href').replace('#', '');
+                navigateTo('home');
+                
+                // Scroll para seção após carregar home
+                setTimeout(() => {
+                    const element = document.getElementById(target);
+                    if (element) {
+                        window.scrollTo({
+                            top: element.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 600);
+            }
+        });
+    });
+    
+    // Histórico do navegador
+    window.addEventListener('popstate', function(event) {
+        if (event.state && event.state.page) {
+            navigateTo(event.state.page);
+        } else {
+            navigateTo('home');
+        }
+    });
+}
+
+// Inicializar tudo
+document.addEventListener('DOMContentLoaded', function() {
+    initStats();
+    setupEventListeners();
+    simulateOnlineUsers();
+    observeElements();
+    updateCart();
+    updatePrice();
+    initNavigation(); // Inicializar navegação
+});
+
+// Modificar setupEventListeners para SPA
+function setupEventListeners() {
+    // Menu mobile
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMenu);
+    }
+    
+    // Smooth scroll apenas na home
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            // Se não for um link de navegação entre páginas
+            if (!this.getAttribute('data-page') || this.getAttribute('data-page') === 'home') {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                // Se estiver na home, fazer scroll normal
+                if (currentPage === 'home') {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Fechar menu mobile
+                        const navLinks = document.querySelector('.nav-links');
+                        if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                        }
+                    }
+                }
+            }
+        });
+    });
+    
+    // Formulário de contato (apenas na home)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            contactForm.reset();
+        });
+    }
+    
+    // Newsletter (ambas as páginas)
+    const newsletterForms = document.querySelectorAll('.newsletter-form');
+    newsletterForms.forEach(form => {
+        const newsletterBtn = form.querySelector('button');
+        newsletterBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = form.querySelector('input').value;
+            if (email && email.includes('@')) {
+                alert('Obrigado por se inscrever! Você receberá nossas novidades.');
+                form.querySelector('input').value = '';
+            } else {
+                alert('Por favor, insira um email válido.');
+            }
+        });
+    });
+}
+
+// As outras funções (carrinho, checkout, etc.) permanecem as mesmas
+// ... (mantenha todas as funções do carrinho e checkout que já existiam)
