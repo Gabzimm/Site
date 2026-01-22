@@ -2,40 +2,34 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WaveX • Bots Discord Premium</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/discord-logo.png">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/discord-logo.png">
 </head>
-<body class="home-page">
+<body>
     <!-- Página Inicial -->
     <div id="homePage" class="page active">
         <!-- Navbar -->
         <nav class="navbar">
             <div class="container">
-                <div class="nav-brand">
-                    <div class="logo">
-                        <span class="logo-icon">⚡</span>
-                        <span class="logo-text">Wave<span class="logo-highlight">X</span></span>
-                    </div>
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">Wave<span class="logo-highlight">X</span></span>
                 </div>
                 
                 <div class="nav-links">
-                    <a href="#home" data-page="home">Início</a>
-                    <a href="#stats" data-page="home">Estatísticas</a>
-                    <a href="#story" data-page="home">História</a>
-                    <a href="#" class="btn-buy-now" onclick="navigateTo('compras')">
+                    <a href="#home">Início</a>
+                    <a href="#stats">Estatísticas</a>
+                    <a href="#story">História</a>
+                    <a href="#" class="btn-buy-now" onclick="openCompras()">
                         <i class="fas fa-bolt"></i> Adquira o Seu!
                     </a>
                     <a href="https://discord.gg/seu-link" class="btn-discord" target="_blank">
                         <i class="fab fa-discord"></i> Discord
                     </a>
-                    <!-- Carrinho -->
                     <a href="#" class="cart-icon" onclick="toggleCart()">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
@@ -47,25 +41,6 @@
                 </button>
             </div>
         </nav>
-
-        <!-- Carrinho Sidebar -->
-        <div class="cart-sidebar" id="cartSidebar">
-            <div class="cart-header">
-                <h3><i class="fas fa-shopping-cart"></i> Seu Carrinho</h3>
-                <button class="close-cart" onclick="toggleCart()">&times;</button>
-            </div>
-            <div class="cart-items" id="cartItems">
-                <p class="empty-cart">Seu carrinho está vazio</p>
-            </div>
-            <div class="cart-total">
-                <p>Total: <span id="cartTotal">R$ 0,00</span></p>
-            </div>
-            <div class="cart-actions">
-                <button class="btn-clear" onclick="clearCart()">Limpar Carrinho</button>
-                <button class="btn-checkout" onclick="checkout()">Finalizar Compra</button>
-            </div>
-        </div>
-        <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
         <!-- Hero Section -->
         <section id="home" class="hero">
@@ -86,7 +61,7 @@
                     </p>
                     
                     <div class="hero-buttons">
-                        <button class="btn-primary" onclick="navigateTo('compras')">
+                        <button class="btn-primary" onclick="openCompras()">
                             <i class="fas fa-rocket"></i> Adquirir Agora
                         </button>
                         <a href="https://discord.com/oauth2/authorize?client_id=SEU_CLIENT_ID" class="btn-secondary" target="_blank">
@@ -126,7 +101,7 @@
             </div>
         </section>
 
-        <!-- Live Stats Section -->
+        <!-- Live Stats -->
         <section id="stats" class="live-stats">
             <div class="container">
                 <div class="stats-grid">
@@ -137,7 +112,7 @@
                         <div class="stat-content">
                             <h3 class="stat-number" id="activeUsers">1,247</h3>
                             <p class="stat-label">Usuários Ativos</p>
-                            <div class="stat-trend up">
+                            <div class="stat-trend">
                                 <i class="fas fa-arrow-up"></i>
                                 <span>+12% hoje</span>
                             </div>
@@ -151,7 +126,7 @@
                         <div class="stat-content">
                             <h3 class="stat-number" id="totalSales">589</h3>
                             <p class="stat-label">Bots Vendidos</p>
-                            <div class="stat-trend up">
+                            <div class="stat-trend">
                                 <i class="fas fa-arrow-up"></i>
                                 <span>+8 esta semana</span>
                             </div>
@@ -165,7 +140,7 @@
                         <div class="stat-content">
                             <h3 class="stat-number" id="activeBots">2,841</h3>
                             <p class="stat-label">Bots Online</p>
-                            <div class="stat-trend up">
+                            <div class="stat-trend">
                                 <i class="fas fa-arrow-up"></i>
                                 <span>99.9% uptime</span>
                             </div>
@@ -189,7 +164,7 @@
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
+        <!-- Why Choose Us -->
         <section id="why" class="why-choose">
             <div class="container">
                 <div class="section-header">
@@ -240,7 +215,7 @@
             </div>
         </section>
 
-        <!-- Nossa História Section -->
+        <!-- História -->
         <section id="story" class="our-story">
             <div class="container">
                 <div class="section-header">
@@ -312,18 +287,18 @@
                     
                     <div class="footer-links">
                         <h4>Produtos</h4>
-                        <a href="#" onclick="navigateTo('compras')">Sistema de Tickets</a>
-                        <a href="#" onclick="navigateTo('compras')">Sistema de Sets</a>
-                        <a href="#" onclick="navigateTo('compras')">Sistema de Cargos</a>
-                        <a href="#" onclick="navigateTo('compras')">Planos</a>
+                        <a href="#" onclick="openCompras()">Sistema de Tickets</a>
+                        <a href="#" onclick="openCompras()">Sistema de Sets</a>
+                        <a href="#" onclick="openCompras()">Sistema de Cargos</a>
+                        <a href="#" onclick="openCompras()">Planos</a>
                     </div>
                     
                     <div class="footer-links">
                         <h4>WaveX</h4>
-                        <a href="#home" data-page="home">Início</a>
-                        <a href="#story" data-page="home">Nossa História</a>
-                        <a href="#why" data-page="home">Por que WaveX?</a>
-                        <a href="#contact" data-page="home">Contato</a>
+                        <a href="#home">Início</a>
+                        <a href="#story">Nossa História</a>
+                        <a href="#why">Por que WaveX?</a>
+                        <a href="#contact">Contato</a>
                     </div>
                     
                     <div class="footer-newsletter">
@@ -331,7 +306,7 @@
                         <p>Receba novidades e atualizações sobre nossos bots.</p>
                         <div class="newsletter-form">
                             <input type="email" placeholder="Seu email">
-                            <button type="button">
+                            <button type="button" onclick="subscribeNewsletter()">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>
@@ -339,7 +314,7 @@
                 </div>
                 
                 <div class="footer-bottom">
-                    <p>&copy; 2024 WaveX. Todos os direitos reservados. | <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a></p>
+                    <p>&copy; 2024 WaveX. Todos os direitos reservados.</p>
                 </div>
             </div>
         </footer>
@@ -347,19 +322,17 @@
 
     <!-- Página de Compras -->
     <div id="comprasPage" class="page">
-        <!-- Navbar da página de compras -->
+        <!-- Navbar Compras -->
         <nav class="navbar compras-navbar">
             <div class="container">
-                <div class="nav-brand">
-                    <div class="logo">
-                        <span class="logo-icon">⚡</span>
-                        <span class="logo-text">Wave<span class="logo-highlight">X</span></span>
-                    </div>
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">Wave<span class="logo-highlight">X</span></span>
                     <span class="page-title">/ Comprar</span>
                 </div>
                 
                 <div class="nav-links">
-                    <a href="#" class="btn-back-home" onclick="navigateTo('home')">
+                    <a href="#" class="btn-back-home" onclick="goHome()">
                         <i class="fas fa-arrow-left"></i> Voltar ao Site
                     </a>
                     <a href="#" class="cart-icon" onclick="toggleCart()">
@@ -370,16 +343,16 @@
             </div>
         </nav>
 
-        <!-- Conteúdo da página de compras -->
-        <div class="compras-page-content">
+        <!-- Conteúdo Compras -->
+        <div class="compras-content">
             <div class="container">
-                <!-- Header da página de compras -->
+                <!-- Header -->
                 <div class="compras-header">
                     <h1><i class="fas fa-shopping-cart"></i> Comprar WaveX</h1>
                     <p>Escolha os produtos perfeitos para seu servidor Discord</p>
                 </div>
 
-                <!-- Produtos Individuais -->
+                <!-- Produtos -->
                 <section class="compras-section">
                     <div class="section-header">
                         <h2 class="section-title">🎮 <span class="gradient-text">Produtos Individuais</span></h2>
@@ -407,7 +380,7 @@
                                 <span class="price">R$ 29,90</span>
                                 <span class="period">/ único</span>
                             </div>
-                            <button class="btn-product" onclick="addToCart('Sistema de Tickets', 29.90, 'tickets')">
+                            <button class="btn-product" onclick="addToCart('Sistema de Tickets', 29.90)">
                                 <i class="fas fa-shopping-cart"></i> Comprar Agora
                             </button>
                         </div>
@@ -433,7 +406,7 @@
                                 <span class="price">R$ 34,90</span>
                                 <span class="period">/ único</span>
                             </div>
-                            <button class="btn-product" onclick="addToCart('Sistema de Sets', 34.90, 'sets')">
+                            <button class="btn-product" onclick="addToCart('Sistema de Sets', 34.90)">
                                 <i class="fas fa-bolt"></i> Comprar Agora
                             </button>
                         </div>
@@ -458,7 +431,7 @@
                                 <span class="price">R$ 24,90</span>
                                 <span class="period">/ único</span>
                             </div>
-                            <button class="btn-product" onclick="addToCart('Sistema de Cargos', 24.90, 'cargos')">
+                            <button class="btn-product" onclick="addToCart('Sistema de Cargos', 24.90)">
                                 <i class="fas fa-shopping-cart"></i> Comprar Agora
                             </button>
                         </div>
@@ -486,24 +459,24 @@
                             <div class="pricing-features">
                                 <div class="feature-selector">
                                     <label class="checkbox">
-                                        <input type="checkbox" checked onclick="updatePrice()">
+                                        <input type="checkbox" checked onchange="updatePrice()">
                                         <span class="checkmark"></span>
                                         Sistema de Tickets (+R$ 29,90)
                                     </label>
                                     <label class="checkbox">
-                                        <input type="checkbox" onclick="updatePrice()">
+                                        <input type="checkbox" onchange="updatePrice()">
                                         <span class="checkmark"></span>
                                         Sistema de Sets (+R$ 34,90)
                                     </label>
                                     <label class="checkbox">
-                                        <input type="checkbox" onclick="updatePrice()">
+                                        <input type="checkbox" onchange="updatePrice()">
                                         <span class="checkmark"></span>
                                         Sistema de Cargos (+R$ 24,90)
                                     </label>
                                 </div>
                             </div>
                             
-                            <button class="btn-pricing" onclick="addCartIndividual()">
+                            <button class="btn-pricing" onclick="addIndividualToCart()">
                                 <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
                             </button>
                         </div>
@@ -528,7 +501,7 @@
                                 <p><i class="fas fa-check"></i> Instalação assistida</p>
                             </div>
                             
-                            <button class="btn-pricing" onclick="addToCart('Pacote Completo WaveX', 62.90, 'complete')">
+                            <button class="btn-pricing" onclick="addToCart('Pacote Completo WaveX', 62.90)">
                                 <i class="fas fa-gem"></i> Comprar Agora
                             </button>
                         </div>
@@ -551,7 +524,7 @@
                                 <p><i class="fas fa-check"></i> 14 dias de garantia</p>
                             </div>
                             
-                            <button class="btn-pricing" onclick="addToCart('Plano Mensal WaveX', 19.90, 'mensal')">
+                            <button class="btn-pricing" onclick="addToCart('Plano Mensal WaveX', 19.90)">
                                 <i class="fas fa-calendar-alt"></i> Assinar
                             </button>
                         </div>
@@ -567,39 +540,31 @@
                     
                     <div class="faq-grid">
                         <div class="faq-item">
-                            <h4><i class="fas fa-shipping-fast"></i> Como recebo o bot após a compra?</h4>
-                            <p>Imediatamente após a confirmação do pagamento, você recebe um email com o link de convite do bot e tutorial de instalação.</p>
+                            <h4><i class="fas fa-shipping-fast"></i> Como recebo o bot?</h4>
+                            <p>Após a confirmação do pagamento, você recebe um email com o link do bot e tutorial de instalação.</p>
                         </div>
                         
                         <div class="faq-item">
                             <h4><i class="fas fa-shield-alt"></i> Tem garantia?</h4>
-                            <p>Sim! 7 dias de garantia para qualquer problema. Se o bot não funcionar como esperado, reembolso integral.</p>
+                            <p>Sim! 7 dias de garantia. Se o bot não funcionar, reembolso integral.</p>
                         </div>
                         
                         <div class="faq-item">
-                            <h4><i class="fas fa-credit-card"></i> Quais formas de pagamento?</h4>
-                            <p>Aceitamos PIX (pagamento instantâneo), cartão de crédito (Mastercard/Visa) e PayPal.</p>
+                            <h4><i class="fas fa-credit-card"></i> Formas de pagamento?</h4>
+                            <p>Aceitamos PIX, cartão de crédito (Mastercard/Visa) e PayPal.</p>
                         </div>
                         
                         <div class="faq-item">
                             <h4><i class="fas fa-headset"></i> Como funciona o suporte?</h4>
-                            <p>Suporte 24/7 via Discord. Tempo médio de resposta: 15 minutos para problemas críticos.</p>
+                            <p>Suporte 24/7 via Discord. Resposta em 15 minutos para problemas críticos.</p>
                         </div>
                     </div>
                 </section>
-
-                <!-- Footer da página de compras -->
-                <footer class="compras-footer">
-                    <p>Precisa de ajuda? <a href="#" onclick="navigateTo('home'); setTimeout(() => { document.querySelector('a[href="#contact"]').click(); }, 500);">Entre em contato conosco</a></p>
-                    <button class="btn-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                        <i class="fas fa-arrow-up"></i> Voltar ao topo
-                    </button>
-                </footer>
             </div>
         </div>
     </div>
 
-    <!-- Carrinho Sidebar (compartilhado) -->
+    <!-- Carrinho -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h3><i class="fas fa-shopping-cart"></i> Seu Carrinho</h3>
@@ -618,7 +583,6 @@
     </div>
     <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
-    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
